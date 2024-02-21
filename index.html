@@ -15,6 +15,7 @@
       background-color: #16181e; 
       transition: background-color 0.3s ease;
     }
+
     .sidenav {
       height: 100%;
       width: 210px;
@@ -29,7 +30,7 @@
       transition: transform 0.3s ease;
     }
     .sidenav a {
-      padding: 10px 15px; /* Ajustement de l'espacement pour une meilleure visibilité */
+      padding: 5px 15px; /* Ajustement de l'espacement pour une meilleure visibilité */
       text-decoration: none;
       font-size: 16px;
       color: white;
@@ -38,11 +39,13 @@
     .sidenav a:hover {
       background-color: #555;
     }
+
     .content {
       padding: 20px;
       margin-left: 270px; 
       z-index: 1; /* Assurez-vous que la div content soit sous le menu en mode mobile */
     }
+
     .logo {
       padding-left: 0;
       width: 100%;
@@ -77,7 +80,7 @@
 </head>
 <body>
 
-<div class="burger-menu">&#9776;</div>
+<div class="burger-menu" id="burger-menu">&#9776;</div>
 
 <div class="sidenav">
   <div class="logo">
@@ -132,10 +135,12 @@
       sideNav.style.width = '250px';
       sideNav.style.transform = 'translateX(0)';
       content.style.marginLeft = '0px';
+      burgerMenu.style.marginLeft = '270px';
     } else {
       sideNav.style.width = '0';
       sideNav.style.transform = 'translateX(-250px)';
       content.style.marginLeft = '0';
+      burgerMenu.style.marginLeft = '0px';
     }
   });
 </script>
