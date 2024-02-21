@@ -19,7 +19,7 @@
       height: 100%;
       width: 210px;
       position: fixed;
-      z-index: 1;
+      z-index: 2; /* Pour placer le menu au-dessus de la div content */
       top: 0;
       left: 0;
       background-color: #21242d;
@@ -29,7 +29,7 @@
       transition: transform 0.3s ease;
     }
     .sidenav a {
-      padding: 4px 15px; 
+      padding: 10px 15px; /* Ajustement de l'espacement pour une meilleure visibilité */
       text-decoration: none;
       font-size: 16px;
       color: white;
@@ -41,6 +41,7 @@
     .content {
       padding: 20px;
       margin-left: 270px; 
+      z-index: 1; /* Assurez-vous que la div content soit sous le menu en mode mobile */
     }
     .logo {
       padding-left: 0;
@@ -52,11 +53,11 @@
     }
     @media screen and (max-width: 768px) {
       .sidenav {
-        width: 0;
-        transform: translateX(-250px);
+        width: 250px; /* Augmenter la largeur du menu pour une meilleure visibilité */
+        transform: translateX(-250px); /* Réinitialiser la transformation pour qu'il soit caché par défaut */
       }
       .sidenav a {
-        display: none;
+        display: block; /* Assurez-vous que les éléments du menu sont visibles */
       }
       .content {
         margin-left: 0;
@@ -67,7 +68,7 @@
         top: 20px;
         left: 20px;
         cursor: pointer;
-        z-index: 2;
+        z-index: 3; /* Assurez-vous que le bouton du menu hamburger soit au-dessus de tout */
         color: white;
         font-size: 20px;
       }
@@ -130,7 +131,7 @@
     if (sideNavWidth === '0px') {
       sideNav.style.width = '250px';
       sideNav.style.transform = 'translateX(0)';
-      content.style.marginLeft = '280px';
+      content.style.marginLeft = '0px';
     } else {
       sideNav.style.width = '0';
       sideNav.style.transform = 'translateX(-250px)';
