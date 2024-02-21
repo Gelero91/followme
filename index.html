@@ -3,90 +3,140 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Side Menu</title>
+  <title>Follow Me Proto</title>
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Lato&display=swap" rel="stylesheet">
   <style>
     body {
+      font-family: 'Lato', sans-serif;
       margin: 0;
-      font-family: Arial, sans-serif;
+      padding: 0;
+      color: white;
+      background-color: #16181e; 
+      transition: background-color 0.3s ease;
     }
-    .sidebar {
+    .sidenav {
       height: 100%;
-      width: 250px;
+      width: 210px;
       position: fixed;
+      z-index: 1;
       top: 0;
       left: 0;
-      background-color: #111;
-      overflow-x: hidden;
-      transition: 0.5s;
-      padding-top: 60px;
+      background-color: #21242d;
+      padding-top: 20px;
+      padding-left: 20px;
+      padding-bottom: 20px; 
+      transition: transform 0.3s ease;
     }
-    .sidebar a {
-      padding: 10px 15px;
+    .sidenav a {
+      padding: 4px 15px; 
       text-decoration: none;
-      font-size: 20px;
-      color: #818181;
+      font-size: 16px;
+      color: white;
       display: block;
-      transition: 0.3s;
     }
-    .sidebar a:hover {
-      color: #f1f1f1;
+    .sidenav a:hover {
+      background-color: #555;
     }
-    .sidebar .close-btn {
-      position: absolute;
-      top: 10px;
-      right: 10px;
-      font-size: 36px;
-      margin-left: 50px;
+    .content {
+      padding: 20px;
+      margin-left: 270px; 
     }
-    .burger-menu {
-      display: none;
-      cursor: pointer;
+    .logo {
+      padding-left: 0;
+      width: 100%;
+      font-size: 28px;
+      font-family: 'Open Sans', sans-serif;
+      font-weight: 900;
+      font-stretch: condensed;
     }
     @media screen and (max-width: 768px) {
-      .sidebar {
+      .sidenav {
         width: 0;
+        transform: translateX(-250px);
+      }
+      .sidenav a {
+        display: none;
+      }
+      .content {
+        margin-left: 0;
       }
       .burger-menu {
         display: block;
         position: fixed;
-        top: 10px;
-        left: 10px;
-        z-index: 999;
+        top: 20px;
+        left: 20px;
+        cursor: pointer;
+        z-index: 2;
+        color: white;
+        font-size: 20px;
       }
     }
   </style>
 </head>
 <body>
 
-<div class="sidebar" id="sidebar">
-  <a href="javascript:void(0)" class="close-btn" onclick="closeSidebar()">&times;</a>
-  <a href="#">Accueil</a>
-  <a href="#">Services</a>
-  <a href="#">À propos</a>
-  <a href="#">Contact</a>
+<div class="burger-menu">&#9776;</div>
+
+<div class="sidenav">
+  <div class="logo">
+    FOLLOW ME <br>
+    PRODUCTION
+  </div>
+  <h3>Menu</h3>
+  <a href="#">One day flix</a>
+  <a href="#">L'association</a>
+  <a href="#">l'actualité</a>
+  <a href="#">Agenda</a>
+  <a href="#">Nous soutenir</a>
+  <a href="#">Partenaires</a>
+  <a href="#">Agenda</a>
+  <br>
+  <h3>J'embarque</h3>
+  <a href="#">Vu récemment</a>
+  <a href="#">Mes favoris</a>
+  <a href="#">Mon agenda</a>
+  <a href="#">Ressources</a>
+  <a href="#">Blog</a>
+  <br>
+  <h3>Général</h3>
+  <a href="#">FAQ</a>
+  <a href="#">Quitter le navire</a>
 </div>
 
-<div class="burger-menu" onclick="toggleSidebar()">&#9776;</div>
-
-<button class="open-menu-btn" onclick="openSidebar()">Ouvrir le menu</button>
+<div class="content">
+  <h2>Follow me production</h2>
+  <p>Petit prototype pour te donner un aperçu de ton travail de design.
+    <br><br>
+    Pour l'instant, ce n'est que le side menu. Il est "responsive", cela veut dire qu'il s'adapte au type d'appareil sur lequel tu es.
+    <br><br>
+    Si tu visites sur ordinateur, le menu sera ouvert par défaut.
+    Si tu le visites sur téléphone, il sera "collapsible", ou "pliable" si tu préfères.
+    <br><br>
+    To do :<br><br>
+    - Arranger le logo<br><br>
+    - Ajouter des icônes<br><br>
+    - Ajuster le design pour téléphone
+  </p>
+</div>
 
 <script>
-function toggleSidebar() {
-  var sidebar = document.getElementById("sidebar");
-  if (sidebar.style.width === "250px") {
-    closeSidebar();
-  } else {
-    openSidebar();
-  }
-}
+  const burgerMenu = document.querySelector('.burger-menu');
+  const sideNav = document.querySelector('.sidenav');
+  const content = document.querySelector('.content');
 
-function openSidebar() {
-  document.getElementById("sidebar").style.width = "250px";
-}
-
-function closeSidebar() {
-  document.getElementById("sidebar").style.width = "0";
-}
+  burgerMenu.addEventListener('click', function() {
+    const sideNavWidth = getComputedStyle(sideNav).width;
+    if (sideNavWidth === '0px') {
+      sideNav.style.width = '250px';
+      sideNav.style.transform = 'translateX(0)';
+      content.style.marginLeft = '280px';
+    } else {
+      sideNav.style.width = '0';
+      sideNav.style.transform = 'translateX(-250px)';
+      content.style.marginLeft = '0';
+    }
+  });
 </script>
 
 </body>
