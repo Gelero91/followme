@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Follow Me Proto</title>
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Lato&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Lato', sans-serif;
+      margin: 0;
+      padding: 0;
+      color: white;
+      background-color: #16181e; 
+      transition: background-color 0.3s ease;
+    }
+
+    .sidenav {
+      height: 100%;
+      width: 210px;
+      position: fixed;
+      z-index: 2;
+      top: 0;
+      left: 0;
+      background-color: #21242d;
+      padding-top: 20px;
+      padding-left: 20px;
+      padding-bottom: 20px; 
+      transition: transform 0.3s ease;
+    }
+
+    .sidenav a {
+      padding: 5px 15px;
+      text-decoration: none;
+      font-size: 16px;
+      color: white;
+      display: block;
+    }
+
+    .sidenav a:hover {
+      background-color: #555;
+    }
+
+    .content {
+      margin-left: 210px; 
+      z-index: 1;
+    }
+
+    .container {
+      display: flex;
+      justify-content: space-between;
+      height: 20%;
+    }
+    
+    .menuCard {
+      position: relative;
+      margin-bottom: 10px;
+      width: 22.5%;
+      height: 250px;
+      border-radius: 10px;
+      overflow: hidden;
+    }
+    
+    .menuCard img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    
+    .textOverlay {
+      position: absolute;
+      top: 20%;
+      left: 0;
+      width: 100%;
+      color: white;
+      padding: 10px;
+      box-sizing: border-box;
+      font-size: 18px;
+      font-family: 'Open Sans', sans-serif;
+      font-weight: 900;
+      font-stretch: condensed;
+    }
+    
+    .page {
+      padding-left: 10%;
+      padding-right: 10%;
+    }
+
+    .logo {
+      padding-left: 0;
+      width: 100%;
+      font-size: 28px;
+      font-family: 'Open Sans', sans-serif;
+      font-weight: 900;
+      font-stretch: condensed;
+    }
+
+    .title {
+      font-size: 28px;
+      font-family: 'Open Sans', sans-serif;
+      font-weight: 900;
+      font-stretch: condensed;
+      text-align: center;
+    }
+    
+    .card {      
+      margin-bottom: 10px;
+      width: 20%;
+      background-color: #898989;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      border-radius: 10px;
+      height: 200px;
+    }
+
+    .vertiCard {
+      margin-bottom: 10px;
+      width: 100%;
+      height: 100%;
+      background-color: #898989;
+      display: flex;
+      border-radius: 10px;
+    }
+
+    .detailContainer {
+      background-color: none;
+      width: 30%;
+    }
+
+    .detailCard {      
+      margin-bottom: 10px;
+      width: 100%;
+    }
+
+    .detailCardImg {
+      width: 100%;
+      height: 150px;
+      border-radius: 10px;
+      text-align: center;
+      background-color: aqua;
+    }
+
+    .movieCard {      
+      margin-bottom: 10px;
+      width: 20%;
+      background-color: #898989;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      border-radius: 10px;
+      height: 200px;
+    }
+
+    .biographicContainer {
+      display: flex;
+      flex-wrap: wrap;
+    }
+    
+    .biographicDetail {
+      width: 100%;
+      display: flex;
+      margin-bottom: 10px;
+    }
+
+    .biographicDetail.variant {
+      display: flex;
+      margin-bottom: 10px;
+    }
+    
+    .biographicImage {
+      width: 30%;
+      height: 150px;
+      border-radius: 10px;
+      object-fit: cover;
+    }
+    
+    .biographicText {
+      width: 70%;
+      margin-left: 10px;
+    }    
+
+    .biographicText.variant {
+      width: 70%;
+      margin-right: 10px;
+      margin-left: 0px;
+    }   
+
+    /*
+      cacher le side menu (display:none); faire apparaitre menu secondaire (display:block).
+    */
+    @media screen and (max-width: 768px) {
+      .sidenav {
+        /*
+        Au chargement de la page, elle est cachée
+        width: 100%;
+        */
+        transform: translateX(-250px);
+      }
+      .sidenav a {
+        display: block;
+      }
+      
+      .content {
+        margin-left: 0;
+      }
+
+      .burger-menu {
+        display: block;
+        position: fixed;
+        top: 20px;
+        left: 20px;
+        cursor: pointer;
+        z-index: 3;
+        color: white;
+        font-size: 20px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<div class="burger-menu" id="burger-menu" style="color: white;">&#9776;</div>
+
+<div class="sidenav">
+  <div class="logo">
+    FOLLOW ME <br>
+    PRODUCTION
+  </div>
+  <h3>Menu</h3>
+  <a href="#">One day flix</a>
+  <a href="#">L'association</a>
+  <a href="#">l'actualité</a>
+  <a href="#">Agenda</a>
+  <a href="#">Nous soutenir</a>
+  <a href="#">Partenaires</a>
+  <a href="#">Agenda</a>
+  <br>
+  <h3>J'embarque</h3>
+  <a href="#">Vu récemment</a>
+  <a href="#">Mes favoris</a>
+  <a href="#">Mon agenda</a>
+  <a href="#">Ressources</a>
+  <a href="#">Blog</a>
+  <br>
+  <h3>Général</h3>
+  <a href="#">FAQ</a>
+  <a href="#">Quitter le navire</a>
+</div>
+
+<div class="content">
+  <div class="page">
+    <h1 class="title">Page d'accueil</h1>
+    <br><br>
+    <p style="text-align: justify;">Petit prototype pour te donner un aperçu de ton travail de design.
+      <br><br>
+      Pour l'instant, ce n'est que le side menu. Il est "responsive", cela veut dire qu'il s'adapte au type d'appareil sur lequel tu es.
+      Je ne suis pas satisfait de l'architecture pour le moment, le format téléphone n'est pas ma priorité pour le moment. Je risque de me perdre et faire des erreurs à force de concilier les deux.
+      <br><br>
+      Tu verras que j'ai suivi le figma que tu as conçu.
+      J'ai évidemment de nombreux détails à régler.
+    </p>
+      <br><br>
+
+    <h2>Main menu cards</h2>
+    <p>Boutons, utilisé sur la page d'accueil. D'abord imaginé comme landing-page pour directement orienté les visiteurs.</p>
+    <div class="container">
+      <div class="menuCard">
+        <img src="https://static.timesofisrael.com/fr/uploads/2021/11/Image-2.jpg" alt="Plateforme de streaming">
+        <div class="textOverlay">Plateforme de streaming</div>
+      </div>
+      <div class="menuCard">
+        <img src="https://static.timesofisrael.com/fr/uploads/2021/11/Image-2.jpg" alt="Présentation de l'association">
+        <div class="textOverlay">Présentation de l'association</div>
+      </div>
+      <div class="menuCard">
+        <img src="https://static.timesofisrael.com/fr/uploads/2021/11/Image-2.jpg" alt="Actualités">
+        <div class="textOverlay">Actualités</div>
+      </div>
+      <div class="menuCard">
+        <img src="https://static.timesofisrael.com/fr/uploads/2021/11/Image-2.jpg" alt="Agenda">
+        <div class="textOverlay">Agenda</div>
+      </div>
+    </div>
+    
+    <br><br>
+
+    <h2>Biographic Cards</h2>
+    <p>Module biographique, utilisé sur la page de présentation de l'équipe. Permet d'afficher beaucoup de texte pour une peite image.</p>
+    <div class="biographicContainer">
+      <div class="biographicDetail">
+        <img class="biographicImage" src="https://st2.depositphotos.com/2619031/5597/i/450/depositphotos_55979663-stock-photo-the-world-famous-azure-window.jpg" alt="Image 1">
+        <p class="biographicText">Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet.</p>
+      </div>
+    
+      <div class="biographicContainer">
+        <div class="biographicDetail variant">
+          <p class="biographicText variant">Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet.</p>
+          <img class="biographicImage" src="https://static.timesofisrael.com/fr/uploads/2021/11/Image-2.jpg" alt="Image 1">
+        </div>
+      </div>
+    
+      <div class="biographicDetail">
+        <img class="biographicImage" src="https://img.over-blog-kiwi.com/2/89/68/92/20190824/ob_4af977_20190822-152802-reduite.jpg" alt="Image 3">
+        <p class="biographicText">Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet.</p>
+      </div>      
+    </div>
+
+    <br><br>
+
+    <h2>Détail cards</h2>
+    <p>Module de présentation d'un image sous forme de colonne. Permet d'afficher beaucoup d'informations en peu d'espace.</p>
+    <div class="container">
+      <div class="detailContainer">
+        <img class="detailCardImg" src="https://st2.depositphotos.com/2619031/5597/i/450/depositphotos_55979663-stock-photo-the-world-famous-azure-window.jpg"></img>
+        <p class="detailCard">Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet.</p>
+      </div>
+
+      <div class="detailContainer">
+        <img class="detailCardImg" src="https://t4.ftcdn.net/jpg/04/30/86/41/360_F_430864194_8Nf34P9NeVZzVHRabIq89BOWe9JAUfjT.jpg"></img>
+        <p class="detailCard">Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.</p>
+      </div>
+
+      <div class="detailContainer">
+        <img class="detailCardImg" src="https://img.over-blog-kiwi.com/2/89/68/92/20190824/ob_4af977_20190822-152802-reduite.jpg"></img>
+        <p class="detailCard">Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet.</p>
+      </div>      
+    </div>
+
+    <br><br>
+
+    <h2>Movie cards</h2>
+    <p>Module pour la page VOD, permet d'avoir un appeçu dynamique de la vidéo.</p>
+    <div class="container">
+      <div class="movieCard">Movie cards</div>
+      <div class="movieCard">Movie cards</div>
+      <div class="movieCard">Movie cards</div>
+      <div class="movieCard">Movie cards</div>
+    </div>
+
+    <br><br>
+
+    <h2>Other cards</h2>
+    <p></p>
+
+    <div class="container">
+      <div class="card">Card 1</div>
+      <div class="card">Card 2</div>
+      <div class="card">Card 3</div>
+      <div class="card">Card 4</div>
+    </div>
+
+    <!--
+    <div class="container">
+      <div>
+        <div class="vertiCard">Haute</div>
+        <div class="vertiCard">Basse</div>
+      </div>
+
+      <div class="card" style="height: 200%;">Milieu-Droite</div>
+    </div>
+    -->
+
+    <h1>TODO :</h1>
+    <p>
+      - Arranger le logo<br><br>
+      - Ajouter des icônes<br><br>
+      - Ajuster le design pour téléphone<br><br>
+      - terminer les cards/modules principaux<br><br>
+    </p>
+
+  </div>
+</div>
+
+<script>
+  const burgerMenu = document.querySelector('.burger-menu');
+  const sideNav = document.querySelector('.sidenav');
+  const content = document.querySelector('.content');
+
+  burgerMenu.addEventListener('click', function() {
+    const sideNavWidth = getComputedStyle(sideNav).width;
+    if (sideNavWidth === '0px') {
+      sideNav.style.width = '250px';
+      sideNav.style.transform = 'translateX(0)';
+      content.style.marginLeft = '0px';
+      burgerMenu.style.marginLeft = '270px';
+    } else {
+      sideNav.style.width = '0';
+      sideNav.style.transform = 'translateX(-250px)';
+      content.style.marginLeft = '0';
+      burgerMenu.style.marginLeft = '0px';
+    }
+  });
+</script>
+
+</body>
+</html>
